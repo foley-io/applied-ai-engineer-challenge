@@ -1,0 +1,22 @@
+[
+  {
+    "request": "Review driver D-1042 and tell me if they're safe to dispatch",
+    "driver_id": "D-1042"
+  },
+  {
+    "request": "What's the safety score for driver D-1043?",
+    "driver_id": "D-1043"
+  },
+  {
+    "request": "Run an MVR check on driver D-1042",
+    "driver_id": "D-1042"
+  },
+  {
+    "request": "Summarize the violations for D-1044",
+    "driver_id": "D-1044"
+  },
+  {
+    "request": "Is D-1045 in good standing?",
+    "driver_id": "D-1045"
+  }
+]

@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  agent:
+    build: .
+    volumes:
+      - /Users/devuser/foley/data:/app/data
+    environment:
+      - DEBUG=true
+    ports:
+      - "5000:5000"
