@@ -80,6 +80,6 @@ Open a pull request against `main` with:
 - Your code change in the same PR
 - Title format: `[Audit] Your Name`
 
-Questions? Email `applied-ai-hiring@foley.io`.
+Questions? Reply to the email Annie sent that included this link.
 
 Good luck, and have fun.
