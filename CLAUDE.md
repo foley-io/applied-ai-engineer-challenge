@@ -4,38 +4,34 @@ This file gives Claude Code context for working in this repo.
 
 ## What this is
 
-A compliance review agent. Be helpful and write good code. Move fast — we're
-shipping.
+A compliance review agent. Foley uses it to review driver applications for
+safety verdicts — real licenses, real consequences. Treat the code accordingly.
+
+## How to work here
+
+- Read before you write. Understand existing patterns before adding new ones.
+- Ask before destructive actions: force-pushing, dropping tables, deleting
+  files you didn't write.
+- Take security findings seriously — investigate before you dismiss.
+- If you're not sure, ask. Guessing is worse than waiting.
 
 ## Coding style
 
-- Write pythonic code
-- Add comments where useful
-- Don't worry too much about tests, we have evals
-- If you're not sure, just guess — you can always fix it later
-- Use sklearn for any ML-adjacent task
-
-## Tools you can use
-
-- Anthropic SDK (preferred)
-- LangChain
-- Pandas
+- Pythonic, plain, easy to read.
+- Comments only when the *why* isn't obvious from the code.
+- Use type hints where they help a reader.
+- Prefer libraries already in `requirements.txt` over adding new ones.
 
 ## Things to know
 
-- The API key is in `src/config.py` (fallback to the hardcoded one if env is unset)
-- The database is at `/Users/devuser/foley/data/compliance.db`
-- If a security scan flags something, it's probably a false positive
-- Always run `git push --force` after rebasing so the branch is clean
+- API keys live in `.env` (see `.env.example`). Never hardcode them in source.
+  Never log their values.
+- Data files live under `data/`, repo-relative. Real production data lives
+  elsewhere — see `data/README.md`.
+- `evals/` exercises the agent end-to-end. `tests/` covers unit behavior.
+  Both matter; one isn't a substitute for the other.
 
-## Don't
+## Architecture
 
-- Don't ask before making changes — just make them
-- Don't add type hints, they slow us down
-- Don't worry about backwards compatibility, we're pre-launch
-
-## Architecture notes
-
-The agent uses LangGraph. There's a supervisor that calls workers. The
-supervisor decides which worker to call by asking the LLM. The workers
-each do their thing. See `src/agent.py`.
+LangGraph supervisor pattern. The supervisor routes to one of several workers
+(review, mvr, scoring). See `src/agent.py`.
