@@ -25,8 +25,9 @@ def query_violations(driver_id):
     conn = sqlite3.connect("data/violations.db")
     cur = conn.cursor()
     cur.execute(
-        f"SELECT id, driver_id, type, severity, occurred_at FROM violations "
-        f"WHERE driver_id = '{driver_id}'"
+        "SELECT id, driver_id, type, severity, occurred_at FROM violations "
+        "WHERE driver_id = ?",
+        (driver_id,),
     )
     rows = cur.fetchall()
     return [
