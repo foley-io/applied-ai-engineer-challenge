@@ -100,10 +100,11 @@ def mvr_worker(state):
         state["next"] = "done"
         return state
     result = TOOLS["run_mvr_check"](driver.get("state", ""), driver.get("license_no", ""))
+    state["output"] = f"MVR result: {result}"
     state["history"] = state.get("history", []) + [
         {"role": "user", "content": f"MVR result: {result}"}
     ]
-    state["next"] = "supervisor"
+    state["next"] = "done"
     return state
 
 
@@ -115,7 +116,7 @@ def scoring_worker(state):
     state["history"] = state.get("history", []) + [
         {"role": "user", "content": f"Score: {score}"}
     ]
-    state["next"] = "supervisor"
+    state["next"] = "done"
     return state
 
 
