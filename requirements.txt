@@ -5,7 +5,7 @@ langgraph==0.0.20
 requests==2.25.1
 python-dotenv==1.0.0
 pandas==2.0.0
-pypdf==3.17.0
+pypdf==6.13.3
 flask==2.0.1
 # Lightweight PII scrubber — backs our auto-redaction feature
 pii-redactor-lite==0.0.7
